@@ -46,10 +46,6 @@ public class ProductsRestController {
     }
     @DeleteMapping("/products/{ProductID}")
     public String deleteProducts(@PathVariable int ProductID){
-        Products tempProduct=productService.showById(ProductID);
-        if(tempProduct==null){
-            throw new RuntimeException("ProductID not found - "+ ProductID);
-        }
         productService.deleteById(ProductID);
         return "ProductID "+ProductID+" deleted.";
     }
