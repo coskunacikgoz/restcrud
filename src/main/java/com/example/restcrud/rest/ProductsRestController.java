@@ -16,7 +16,7 @@ import com.example.restcrud.service.ProductService;
 import com.example.restcrud.entity.Products;
 
 @RestController
-@RequestMapping("/myapi")
+@RequestMapping("/products")
 
 public class ProductsRestController {
     private ProductService productService;
@@ -24,27 +24,27 @@ public class ProductsRestController {
     public ProductsRestController(ProductService myProductsService){
         productService=myProductsService;
     }
-    @GetMapping("/products")
+    @GetMapping("/all")
     public List<Products> showAll(){
         return productService.showAll();
     }
-    @GetMapping("/products/{ProductID}")
+    @GetMapping("/id/{ProductID}")
     public Products getProducts(@PathVariable int ProductID){
         Products products=productService.showById(ProductID);
 
         return products;
     }
-    @PostMapping("/products")
+    @PostMapping("/add")
     public Products addProducts(@RequestBody Products products){
         productService.save(products);
         return products;
     }
-    @PutMapping("/products")
+    @PutMapping("/update")
     public Products updateProducts(@RequestBody Products products){
         productService.save(products);
         return products;
     }
-    @DeleteMapping("/products/{ProductID}")
+    @DeleteMapping("/delete/{ProductID}")
     public String deleteProducts(@PathVariable int ProductID){
         productService.deleteById(ProductID);
         return "ProductID "+ProductID+" deleted.";
