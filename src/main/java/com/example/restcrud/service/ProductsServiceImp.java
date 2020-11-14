@@ -10,12 +10,8 @@ import com.example.restcrud.entity.Products;
 
 @Service
 public class ProductsServiceImp implements ProductService{
-    private ProductsDAO productsDAO;
-
     @Autowired
-    public ProductsServiceImp(ProductsDAO myProductsDAO){
-        productsDAO=myProductsDAO;
-    }
+    private ProductsDAO productsDAO;
 
     @Override
     @Transactional
